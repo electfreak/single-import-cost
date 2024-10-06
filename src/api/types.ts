@@ -11,6 +11,7 @@ export abstract class Bundler {
 export interface Result extends ImportData {
     size: number;
     gzip: number;
+    error: String | null;
 }
 
 export interface ImportData {

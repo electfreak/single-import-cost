@@ -1,10 +1,6 @@
 import { rollup, RollupOptions } from "rollup";
-
-import _terser from "@rollup/plugin-terser";
-import _commonjs from "@rollup/plugin-commonjs";
-// shit, but common: https://github.com/rollup/plugins/issues/1662; TODO fix in future
-const terser = _terser as unknown as typeof _terser.default;
-const commonjs = _commonjs as unknown as typeof _commonjs.default;
+import terser from "@rollup/plugin-terser"; // if switch to .mts (esm module output): https://github.com/rollup/plugins/issues/1662
+import commonjs from "@rollup/plugin-commonjs";
 
 import { resolve } from "node:path";
 import {

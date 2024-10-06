@@ -3,17 +3,31 @@
 This package provides an utility which bundles a dummy project with a single import to estimate the size of a given import.
 Calculates size of tree-shaken, minified code.
 
+_Under development._
+
 Uses:
 
 -   esbuild/rollup with few plugins
 -   TypeScript
+
+## Installation
+
+```sh
+npm i electfreak/single-import-cost
+```
 
 ## Usage
 
 Main function is located in [index.ts](./src/index.ts). To call it:
 
 ```ts
-singleImportCost(importData: ImportData, bundler: Bundler /* esbuild by default */)
+import singleImportCost from "single-import-cost";
+
+singleImportCost(
+    importData: ImportData, 
+    bundler: Bundler, // esbuild by default
+    timeoutMs: number // 3'000 by deafult
+)
 
 interface ImportData {
     filePath: string;     // path to file with import
@@ -24,16 +38,17 @@ interface ImportData {
 
 ## Testing
 
-No own tests for now but was tested with VSCode extension tests (see below) – easy to to adapt to them. Most tests didn't show significant difference from those import-cost implementation.
+Was tested with VSCode extension tests (see below) – easy to to adapt to them. Most tests didn't show significant difference from those import-cost implementation.
+No own tests for now.
 
 ## Related:
 
 -   [VSCode import-cost](https://github.com/wix/import-cost/tree/master) (initial inspiration)
+-   Used by [plugin for intellij](https://github.com/electfreak/single-import-cost-ij-plugin)
 
 TODO:
 
 -   write tests?
--   add timeout?
 -   publish package?
--   add caching? 
+-   add caching?
 -   add some configuration (e.g. whether to calc gzip/brotli)
